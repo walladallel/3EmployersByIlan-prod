@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Employees</title>
+{% endblock %}
+
+{% block body %}
+<div class="wrapper">
+    <form action="/" method="POST">
+        <label>First name
+            <input name='first_name' required>
+        </label>
+
+        <label>Last name
+            <input name='last_name' required>
+        </label>
+        
+        <label>Birthday date
+            <input min="1900-01-01" type="date" name="datetime" required>
+        </label>
+
+        <label>ID
+            <input type="number" name='ID' required>
+        </label>
+        
+        <label class="change-direction">Is smoking
+            <input name='is_smoking' class='checkbox' type="checkbox">
+        </label>
+
+        <input class='button' type="submit">
+    </form>
+    
+    <table>
+        <tr class='table-head'>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Is smoking</th>
+            <th>ID</th>
+            <th>Birthday</th>
+        </tr>
+        <!-- display each worker in a row -->
+        {% for worker in workers_dict.values() %}
+        <tr>
+            <th>{{worker['first_name']}}</th>
+            <th>{{worker['last_name']}}</th>
+            <th>{{worker['is_smoking']}}</th>
+            <th>{{worker['ID']}}</th>
+            <th>{{worker['birthday']}}</th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
